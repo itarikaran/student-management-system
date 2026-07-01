@@ -21,7 +21,7 @@ function App() {
     <div style={{ padding: "30px", fontFamily: "Arial" }}>
       <h1>Student Management System</h1>
 
-      <h2>Student List</h2>
+      <h3>Student List</h3>
 
       {students.length === 0 ? (
         <p>No students found.</p>
