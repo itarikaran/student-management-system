@@ -10,41 +10,32 @@ function StudentList() {
         loadStudents();
     }, []);
 
-    const loadStudents = () => {
+    function loadStudents() {
         getStudents().then((res) => {
             setStudents(res.data);
         });
-    };
+    }
 
-    const handleDelete = (id) => {
+    function handleDelete(id) {
         deleteStudent(id).then(() => {
             loadStudents();
         });
-    };
+    }
 
     return (
+        <div>
 
-        <div className="max-w-5xl mx-auto mt-10">
+            <h2>Student Management System</h2>
 
-            <div className="flex justify-between mb-5">
+            <Link to="/add">
+                Add Student
+            </Link>
 
-                <h1 className="text-3xl font-bold">
-                    Student Management
-                </h1>
+            <br /><br />
 
-                <Link
-                    to="/add"
-                    className="bg-blue-600 text-white px-4 py-2 rounded"
-                >
-                    Add Student
-                </Link>
+            <table border="1">
 
-            </div>
-
-            <table className="w-full border">
-
-                <thead className="bg-gray-200">
-
+                <thead>
                     <tr>
                         <th>ID</th>
                         <th>Name</th>
@@ -52,7 +43,6 @@ function StudentList() {
                         <th>Email</th>
                         <th>Action</th>
                     </tr>
-
                 </thead>
 
                 <tbody>
@@ -62,26 +52,19 @@ function StudentList() {
                         <tr key={student.id}>
 
                             <td>{student.id}</td>
-
                             <td>{student.name}</td>
-
                             <td>{student.department}</td>
-
                             <td>{student.email}</td>
 
                             <td>
 
-                                <Link
-                                    to={`/edit/${student.id}`}
-                                    className="bg-green-500 text-white px-3 py-1 rounded mr-2"
-                                >
+                                <Link to={`/edit/${student.id}`}>
                                     Edit
                                 </Link>
 
-                                <button
-                                    onClick={() => handleDelete(student.id)}
-                                    className="bg-red-500 text-white px-3 py-1 rounded"
-                                >
+                                {" | "}
+
+                                <button onClick={() => handleDelete(student.id)}>
                                     Delete
                                 </button>
 
@@ -96,9 +79,7 @@ function StudentList() {
             </table>
 
         </div>
-
     );
-
 }
 
 export default StudentList;
