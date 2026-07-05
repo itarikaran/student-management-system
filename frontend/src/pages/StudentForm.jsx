@@ -43,7 +43,6 @@ function StudentForm() {
             <h2>{id ? "Edit Student" : "Add Student"}</h2>
 
             <form onSubmit={handleSubmit}>
-
                 <input
                     type="text"
                     name="name"
@@ -51,8 +50,6 @@ function StudentForm() {
                     value={student.name}
                     onChange={handleChange}
                 />
-
-                <br /><br />
 
                 <input
                     type="text"
@@ -62,8 +59,6 @@ function StudentForm() {
                     onChange={handleChange}
                 />
 
-                <br /><br />
-
                 <input
                     type="email"
                     name="email"
@@ -72,12 +67,7 @@ function StudentForm() {
                     onChange={handleChange}
                 />
 
-                <br /><br />
-
-                <button type="submit">
-                    Save
-                </button>
-
+                <button type="submit">Save</button>
             </form>
         </div>
     );

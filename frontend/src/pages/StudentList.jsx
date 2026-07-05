@@ -10,31 +10,25 @@ function StudentList() {
         loadStudents();
     }, []);
 
-    function loadStudents() {
+    const loadStudents = () => {
         getStudents().then((res) => {
             setStudents(res.data);
         });
-    }
+    };
 
-    function handleDelete(id) {
+    const handleDelete = (id) => {
         deleteStudent(id).then(() => {
             loadStudents();
         });
-    }
+    };
 
     return (
         <div>
+            <h1>Student Management</h1>
 
-            <h2>Student Management System</h2>
-
-            <Link to="/add">
-                Add Student
-            </Link>
-
-            <br /><br />
+            <Link to="/add">Add Student</Link>
 
             <table border="1">
-
                 <thead>
                     <tr>
                         <th>ID</th>
@@ -46,38 +40,25 @@ function StudentList() {
                 </thead>
 
                 <tbody>
-
                     {students.map((student) => (
-
                         <tr key={student.id}>
-
                             <td>{student.id}</td>
                             <td>{student.name}</td>
                             <td>{student.department}</td>
                             <td>{student.email}</td>
-
                             <td>
-
-                                <Link to={`/edit/${student.id}`}>
-                                    Edit
-                                </Link>
+                                <Link to={`/edit/${student.id}`}>Edit</Link>
 
                                 {" | "}
 
                                 <button onClick={() => handleDelete(student.id)}>
                                     Delete
                                 </button>
-
                             </td>
-
                         </tr>
-
                     ))}
-
                 </tbody>
-
             </table>
-
         </div>
     );
 }
